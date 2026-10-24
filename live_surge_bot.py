@@ -3,7 +3,7 @@ import asyncio
 from datetime import datetime, time, timedelta
 from flask import flask
 app = Flask(__name__)
-@app.route(‘/‘)
+@app.route('/')
 def home():
     return “Bot is running!”
 import threading
