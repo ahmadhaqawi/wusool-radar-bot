@@ -2,6 +2,7 @@ import logging
 import asyncio
 from datetime import datetime, time, timedelta
 from flask import flask
+app = Flask(__name__)
 from telegram import Update
 from telegram.ext import (
     ApplicationBuilder,
