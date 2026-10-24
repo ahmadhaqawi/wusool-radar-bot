@@ -118,4 +118,4 @@ if __name__ == '__main__':
     
     print("🤖 Bot is running and tracking locations...")
     application.run_polling()
-threading.Thread(target=lambda:app.run(host=‘0.0.0.0’,port=10000)).start
+threading.Thred(target=lambda:app.run(host='0.0.0';port=10000)).start
