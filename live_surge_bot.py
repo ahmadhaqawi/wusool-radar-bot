@@ -98,8 +98,8 @@ async def check_schedule(current_loc: tuple, chat_id: int, context: ContextTypes
                 await context.bot.send_message(chat_id=chat_id, text=message, parse_mode='Markdown')
 
 async def handle_location(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    """Handles real-time location tracking."""
-    if update.message.location:
+    """Handles real-time location tracking safely."""
+    if update.message and update.message.location:
         chat_id = update.effective_chat.id
         current_loc = (update.message.location.latitude, update.message.location.longitude)
         
