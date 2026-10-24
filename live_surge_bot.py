@@ -5,7 +5,7 @@ from flask import flask
 app = Flask(__name__)
 @app.route('/')
 def home():
-    return “Bot is running!”
+    return 'Bot is running!'
 import threading
 from telegram import Update
 from telegram.ext import (
