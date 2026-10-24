@@ -3,9 +3,11 @@ import asyncio
 from datetime import datetime, time, timedelta
 from flask import Flask
 app = Flask(__name__)
+
 @app.route('/')
 def home():
     return 'Bot is running!'
+
 import threading
 from telegram import Update
 from telegram.ext import (
@@ -57,31 +59,40 @@ SCHEDULE = {
     ]
 }
 
-today_arabic = days_map.get(day_name)
-if not today_arabic or today_arabic not in SCHEDULE:
-    return
+async def check_schedule(current_loc, chat_id, context):
+    """Checks recurring schedules and predicts upcoming rides."""
+    now = datetime.now()
+    day_name = now.strftime('%A')
+    days_map = {
+        'Sunday': 'الاحد', 'Monday': 'الاثنين', 'Tuesday': 'الثلاثاء',
+        'Wednesday': 'الاربعاء', 'Thursday': 'الخميس', 'Friday': 'الجمعة',
+        'Saturday': 'السبت'
+    }
+    today_arabic = days_map.get(day_name)
+    if not today_arabic or today_arabic not in SCHEDULE:
+        return
 
-current_time = now.time()
+    current_time = now.time()
 
-for event in SCHEDULE[today_arabic]:
-    event_time = datetime.strptime(event["time"], "%H:%M").time()
-    event_datetime = datetime.combine(datetime.today(), event_time)
+    for event in SCHEDULE[today_arabic]:
+        event_time = datetime.strptime(event["time"], "%H:%M").time()
+        event_datetime = datetime.combine(datetime.today(), event_time)
 
-    # Check if the event is within the next 20 minutes
-    time_difference = (event_datetime - now).total_seconds() / 60
+        # Check if the event is within the next 20 minutes
+        time_difference = (event_datetime - now).total_seconds() / 60
 
-    if 0 <= time_difference <= 20:
-        origin_coords = LOCATIONS[event["from"]]
-        distance = geodesic(current_loc, origin_coords).kilometers
+        if 0 <= time_difference <= 20:
+            origin_coords = LOCATIONS[event["from"]]
+            distance = geodesic(current_loc, origin_coords).kilometers
 
-        # Trigger if within 3km of origin
-        if distance <= 3:
-            msg = (
-                f"🚨 تنبيه: تحرك مرتقب في غضون {time_difference:.1f} دقيقة.\n"
-                f"📍 الموقع الحالي: {distance:.1f} كم عن موقعك.\n"
-                "🚗 استعد لاستقبال طلبات 'وصول' الآن."
-            )
-            await context.bot.send_message(chat_id=chat_id, text=msg, parse_mode='Markdown')
+            # Trigger if within 3km of origin
+            if distance <= 3:
+                msg = (
+                    f"🚨 تنبيه: تحرك مرتقب في غضون {time_difference:.1f} دقيقة.\n"
+                    f"📍 الموقع الحالي: {distance:.1f} كم عن موقعك.\n"
+                    "🚗 استعد لاستقبال طلبات 'وصول' الآن."
+                )
+                await context.bot.send_message(chat_id=chat_id, text=msg, parse_mode='Markdown')
 
 async def handle_location(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Handles real-time location tracking safely."""
@@ -90,6 +101,12 @@ async def handle_location(update: Update, context: ContextTypes.DEFAULT_TYPE):
         current_loc = (update.message.location.latitude, update.message.location.longitude)
 
         await check_schedule(current_loc, chat_id, context)
+
+async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    """Activates the bot."""
+    await update.message.reply_text(
+        "مرحباً كابيتان! البوت جاهز لمراقبة موقعك والتنبؤ برحلاتك المتكررة. يرجى إرسال موقعك اللحظي لتفعيل المتابعة."
+    )
 
 if __name__ == '__main__':
     application = ApplicationBuilder().token(BOT_TOKEN).build()
