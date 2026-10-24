@@ -26,7 +26,7 @@ logging.basicConfig(
 )
 
 # Bot Token
-BOT_TOKEN = "8913904158:AAGlWWCjkRCwMAueE1KhDoZOrqjK89v2k2c"
+BOT_TOKEN = "8913904158:AAGlWWCjkRcWWAueE1kHDozOrqjk09v2Wy8"
 
 # Key Coordinates (Home/Work Nodes)
 LOCATIONS = {
