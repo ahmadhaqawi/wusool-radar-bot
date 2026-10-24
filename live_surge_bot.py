@@ -105,7 +105,7 @@ async def handle_location(update: Update, context: ContextTypes.DEFAULT_TYPE):
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Activates the bot."""
     await update.message.reply_text(
-        "مرحباً كابيتان! البوت جاهز لمراقبة موقعك والتنبؤ برحلاتك المتكررة. يرجى إرسال موقعك اللحظي لتفعيل المتابعة."
+        "مرحباً كباتن! البوت جاهز لمراقبة موقعك والتنبؤ برحلاتك المتكررة. يرجى إرسال موقعك اللحظي لتفعيل المتابعة."
     )
 
 if __name__ == '__main__':
