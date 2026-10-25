@@ -129,7 +129,7 @@ HISTORICAL_RIDES = [
         "pickup_lon": 50.0890,
         "pickup_name": "الدمام - شارع 13 الصفا",
         "dropoff_name": "القطيف - حي داود القزاز وصفوى",
-        "price": "50 - 62 r.s",
+        "price": "50 - 62 ر.س",
         "service_type": "وصول",
         "shift_type": "خروج موظفي وردية النهار"
     },
@@ -186,7 +186,7 @@ HISTORICAL_RIDES = [
         "pickup_lon": 50.1925,
         "pickup_name": "الظهران / الخبر - مجمع الظهران بوابة 4",
         "dropoff_name": "الدمام - حي المنار وحي طيبة",
-        "price": "38 - 50 ر.с",
+        "price": "38 - 50 ر.س",
         "service_type": "وصول",
         "shift_type": "تسوق وموظفي مبيعات"
     },
@@ -201,7 +201,7 @@ HISTORICAL_RIDES = [
         "dropoff_name": "الدمام - الشاطئ الغربي وطريق الخليج",
         "price": "45 - 55 ر.س",
         "service_type": "أوبر X",
-        "shift_type": "مطاعم وكافيهات"
+        "shift_type": "مطاعم والكافيهات"
     },
     {
         "id": "ride_night_15",
@@ -224,86 +224,121 @@ HISTORICAL_RIDES = [
         "price": "90 - 130 ر.س",
         "service_type": "UberXL / مطار",
         "shift_type": "رحلات قدوم ليلية"
-    }
-]
-
-# ==============================================================================
-# Matching Engine
-# ==============================================================================
-def find_matching_rides(captain_lat, captain_lon, now_dt):
-    matches = []
-    current_minutes = now_dt.hour * 60 + now_dt.minute
-
-    for ride in HISTORICAL_RIDES:
-        ride_minutes = ride["request_time"].hour * 60 + ride["request_time"].minute
-        diff_minutes = abs(current_minutes - ride_minutes)
-        diff_minutes = min(diff_minutes, 1440 - diff_minutes)
-
-        if diff_minutes <= TIME_WINDOW_MINUTES:
-            dist = geodesic((captain_lat, captain_lon), (ride["pickup_lat"], ride["pickup_lon"])).kilometers
-            if dist <= ALERT_RADIUS_KM:
-                matches.append((ride, dist, diff_minutes))
-
-    # Sort matches by closest distance then time closeness
-    matches.sort(key=lambda x: (x[1], x[2]))
-    return matches
-
-# ==============================================================================
-# Telegram Handlers
-# ==============================================================================
-async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    msg = (
-        "🚀 رادار الطلبات المباشר مفعل.\n"
-        "أرسل موقعك المباشر (Live Location) لربطه بسجل الطلبات السابقة وإشعارك بالطلبات المحتملة في نفس التوقيت والمنطقة."
-    )
-    await update.message.reply_text(msg)
-
-async def handle_location(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    msg = update.message or update.edited_message
-    if not msg or not msg.location:
-        return
-
-    chat_id = update.effective_chat.id
-    c_lat = msg.location.latitude
-    c_lon = msg.location.longitude
-
-    now_dt = datetime.now(TIMEZONE)
-    today_str = now_dt.strftime("%Y-%m-%d")
-
-    matching_rides = find_matching_rides(c_lat, c_lon, now_dt)
-
-    for ride, dist, diff_min in matching_rides:
-        history_key = (chat_id, ride["id"])
-        if alert_history.get(history_key) == today_str:
-            continue
-
-        alert_history[history_key] = today_str
-
-        alert_text = (
-            f"🎯 *طلب محتمل في نفس التوقيت!*\n\n"
-            f"📍 *الموقع:* {ride['pickup_name']}\n"
-            f"📏 *يبعد عنك:* {dist:.1f} كم\n"
-            f"⏰ *وقت الطلب السابق:* {ride['request_time'].strftime('%I:%M %p')}\n"
-            f"🎯 *الوجهة المسجلة:* {ride['dropoff_name']}\n"
-            f"💰 *السعر السابق:* {ride['price']}\n"
-            f"🚖 *النوع:* {ride['service_type']}\n"
-            f"ℹ️ *الملاحظة:* تم تسجيل طلب مطابق سابقاً من هذه النقطة في نفس هذا الوقت."
-        )
-
-        await context.bot.send_message(
-            chat_id=chat_id,
-            text=alert_text,
-            parse_mode="Markdown"
-        )
-
-# ==============================================================================
-# Main Entry Point
-# ==============================================================================
-if __name__ == "__main__":
-    threading.Thread(target=run_health_server, daemon=True).start()
-
-    app = ApplicationBuilder().token(TELEGRAM_BOT_TOKEN).build()
-    app.add_handler(CommandHandler("start", start))
-    app.add_handler(MessageHandler(filters.LOCATION, handle_location))
-
-    app.run_polling()
+    },
+    # --- Previous Batch (Images 1 to 10) ---
+    {
+        "id": "ride_new_01",
+        "request_time": time(8, 57),
+        "pickup_lat": 26.5650,
+        "pickup_lon": 50.0520,
+        "pickup_name": "شارع 2ب 6962، القطيف",
+        "dropoff_name": "شارع الأمير محمد بن فهد 9369، الدمام",
+        "price": "33.11 ر.س",
+        "service_type": "Wusool",
+        "shift_type": "مشاور طويل (أكثر من 30 دقيقة)"
+    },
+    {
+        "id": "ride_new_02",
+        "request_time": time(12, 30),
+        "pickup_lat": 26.5600,
+        "pickup_lon": 50.0600,
+        "pickup_name": "شارع القارب 2531، القطيف",
+        "dropoff_name": "Custodian of The Two Holy Mosques Rd, Al-Thuqbah, Al Khobar",
+        "price": "41.52 ر.س",
+        "service_type": "Wusool",
+        "shift_type": "مشاور طويل (أكثر من 30 دقيقة)"
+    },
+    {
+        "id": "ride_new_03",
+        "request_time": time(12, 56),
+        "pickup_lat": 26.4250,
+        "pickup_lon": 50.0900,
+        "pickup_name": "605، الدمام",
+        "dropoff_name": "7337 أ22، الدمام",
+        "price": "32.59 ر.س",
+        "service_type": "Wusool حصري",
+        "shift_type": "رحلة قياسية"
+    },
+    {
+        "id": "ride_new_04",
+        "request_time": time(16, 5),
+        "pickup_lat": 26.5500,
+        "pickup_lon": 50.0400,
+        "pickup_name": "شارع زهران 3464، القطيف",
+        "dropoff_name": "طريق الملك فهد بن عبدالعزيز 7777، الخبر",
+        "price": "42.49 ر.س",
+        "service_type": "Wusool حصري",
+        "shift_type": "مشاور طويل (أكثر من 30 دقيقة)"
+    },
+    {
+        "id": "ride_new_05",
+        "request_time": time(16, 5),
+        "pickup_lat": 26.5500,
+        "pickup_lon": 50.0400,
+        "pickup_name": "شارع زهران 3464، القطيف",
+        "dropoff_name": "طريق الملك فهد بن عبدالعزيز 7777، الخبر",
+        "price": "42.49 ر.س",
+        "service_type": "Wusool حصري",
+        "shift_type": "مشاور طويل (أكثر من 30 دقيقة)"
+    },
+    {
+        "id": "ride_new_06",
+        "request_time": time(16, 5),
+        "pickup_lat": 26.5500,
+        "pickup_lon": 50.0400,
+        "pickup_name": "شارع زهران 3464، القطيف",
+        "dropoff_name": "طريق الملك فهد بن عبدالعزيز 7777، الخبر",
+        "price": "42.49 ر.س",
+        "service_type": "Wusool حصري",
+        "shift_type": "مشاور طويل (أكثر من 30 دقيقة)"
+    },
+    {
+        "id": "ride_new_07",
+        "request_time": time(16, 5),
+        "pickup_lat": 26.3500,
+        "pickup_lon": 50.2100,
+        "pickup_name": "Kempinski Al Othman Hotel Al Khobar, Al Khobar",
+        "dropoff_name": "شارع الأمير محمد بن فهد 8384، الدمام",
+        "price": "22.21 ر.س",
+        "service_type": "Wusool حصري",
+        "shift_type": "رحلة قصيرة"
+    },
+    {
+        "id": "ride_new_08",
+        "request_time": time(16, 14),
+        "pickup_lat": 26.4300,
+        "pickup_lon": 50.1000,
+        "pickup_name": "شارع سعد بن أبي وقاص، الدمام",
+        "dropoff_name": "605، الدمام",
+        "price": "41.33 ر.س",
+        "service_type": "Wusool",
+        "shift_type": "مشاور طويل (أكثر من 30 دقيقة)"
+    },
+    {
+        "id": "ride_new_09",
+        "request_time": time(17, 50),
+        "pickup_lat": 26.3200,
+        "pickup_lon": 50.2000,
+        "pickup_name": "شارع طارق بن زياد 2251، الخبر",
+        "dropoff_name": "شارع 16 6464، القطيف",
+        "price": "49.99 ر.س",
+        "service_type": "Wusool حصري",
+        "shift_type": "مشاور طويل (أكثر من 30 دقيقة)"
+    },
+    {
+        "id": "ride_new_10",
+        "request_time": time(19, 26),
+        "pickup_lat": 26.3000,
+        "pickup_lon": 50.2200,
+        "pickup_name": "التعاطف 3489، الخبر",
+        "dropoff_name": "605، الدمام",
+        "price": "67.55 ر.س",
+        "service_type": "Wusool حصري",
+        "shift_type": "مشاور طويل (أكثر من 30 دقيقة)"
+    },
+    # --- Latest 10 Images Batch (Images 11 to 20) ---
+    {
+        "id": "ride_latest_11",
+        "request_time": time(19, 26),
+        "pickup_lat": 26.3000,
+        "pickup_lon": 
