@@ -19,7 +19,7 @@ from geopy.distance import geodesic
 # Configuration & State
 # ==============================================================================
 TELEGRAM_BOT_TOKEN = os.environ.get(
-    "TELEGRAM_BOT_TOKEN", "8913904158:AAGlWWCjkRcWWAueE1kHDozOrqjk09v2Wy8"
+    "TELEGRAM_BOT_TOKEN", "8786819830:AAF85r2H4SJ6Z34qpbkStybjanAgIMfaHQA"
 )
 TIMEZONE = pytz.timezone("Asia/Riyadh")
 ALERT_RADIUS_KM = 5.0
