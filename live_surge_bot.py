@@ -42,104 +42,188 @@ def run_health_server():
 # Historical Rides Database (Extracted Directly from Image Data)
 # ==============================================================================
 HISTORICAL_RIDES = [
+    # --- Morning Peak & Shift Work (04:30 - 08:30) ---
     {
-        "id": "ride_001",
-        "request_time": time(4, 42),
-        "pickup_lat": 26.3780,
-        "pickup_lon": 50.1320,
-        "pickup_name": "الدمام - طريق الأمير محمد بن فهد",
-        "dropoff_name": "حي الغرائب / الواحة",
-        "price": "40 - 48 ر.س",
-        "service_type": "وصول / أوبر",
-        "details": "طلب مسجل سابقاً الساعة 04:42 ص"
+        "id": "ride_dawn_01",
+        "request_time": time(4, 30),
+        "pickup_lat": 26.4150,
+        "pickup_lon": 50.0520,
+        "pickup_name": "غرب الدمام - شارع عمر بن الخطاب / أبو أوس الأسلمي",
+        "dropoff_name": "مصفاة رأس تنورة / شركات الجبيل",
+        "price": "45 - 70 ر.س",
+        "service_type": "سفر / شركات",
+        "shift_type": "دوام مبكر ورديات"
     },
     {
-        "id": "ride_002",
+        "id": "ride_dawn_02",
         "request_time": time(4, 45),
         "pickup_lat": 26.2910,
         "pickup_lon": 50.2150,
         "pickup_name": "الخبر - طريق الملك عبدالله / الكورنيش",
         "dropoff_name": "مطار الملك فهد الدولي (DMM)",
-        "price": "60 - 110 ر.س",
+        "price": "65 - 110 ر.س",
         "service_type": "UberXL / مطار",
-        "details": "طلب فندقي / سفر مسجل الساعة 04:45 ص"
+        "shift_type": "رحلات طيران مبكرة"
     },
     {
-        "id": "ride_003",
-        "request_time": time(6, 45),
+        "id": "ride_morning_03",
+        "request_time": time(6, 40),
         "pickup_lat": 26.5580,
         "pickup_lon": 50.0120,
-        "pickup_name": "القطيف - شارع الفلاح / طريق أبو در",
-        "dropoff_name": "الدمام - شارع خلف بن تميم",
-        "price": "45 - 65 ر.س",
-        "service_type": "وصول موظفين",
-        "details": "طلب متكرر صباحي الساعة 06:45 ص"
+        "pickup_name": "القطيف - حي الفلاح / طريق أبو در",
+        "dropoff_name": "الدمام - شارع خلف بن تميم / مجمعات الأعمال",
+        "price": "40 - 65 ر.س",
+        "service_type": "وصول",
+        "shift_type": "دوام حكومي ومكتبي"
     },
     {
-        "id": "ride_004",
-        "request_time": time(7, 10),
+        "id": "ride_morning_04",
+        "request_time": time(7, 0),
         "pickup_lat": 26.5170,
         "pickup_lon": 50.0340,
-        "pickup_name": "القطيف - شارع علي الأنصاري",
-        "dropoff_name": "الدمام - طريق 1",
+        "pickup_name": "القطيف - سيهات / شارع علي الأنصاري",
+        "dropoff_name": "الدمام - طريق 1 والواجهة البحرية",
         "price": "55 - 65 ر.س",
-        "service_type": "وصول",
-        "details": "طلب دوام مسجل الساعة 07:10 ص"
+        "service_type": "وصول موظفين",
+        "shift_type": "ذروة دوام صباحي"
     },
     {
-        "id": "ride_005",
-        "request_time": time(12, 35),
+        "id": "ride_morning_05",
+        "request_time": time(7, 25),
+        "pickup_lat": 26.3780,
+        "pickup_lon": 50.1320,
+        "pickup_name": "الدمام - طريق الأمير محمد بن فهد / الظهران",
+        "dropoff_name": "الظهران - بوابة أرامكو والمدينة الأكاديمية",
+        "price": "35 - 48 ر.س",
+        "service_type": "أوبر X",
+        "shift_type": "دوام شركات الظهران"
+    },
+    {
+        "id": "ride_morning_06",
+        "request_time": time(7, 45),
+        "pickup_lat": 26.4350,
+        "pickup_lon": 50.1040,
+        "pickup_name": "الدمام - حي الشاطئ الشرقي / شارع الأشرعة",
+        "dropoff_name": "الخبر - الحزام الذهبي / طريق الملك فيصل",
+        "price": "42 - 55 ر.س",
+        "service_type": "وصول / أوبر",
+        "shift_type": "انتقال موظفين بين المدن"
+    },
+
+    # --- Midday School & Shift Release (11:45 - 14:45) ---
+    {
+        "id": "ride_midday_07",
+        "request_time": time(12, 30),
         "pickup_lat": 26.4020,
         "pickup_lon": 50.0780,
-        "pickup_name": "الدمام - شارع سهل بن صخر",
-        "dropoff_name": "الخبر - شارع 25هـ",
-        "price": "38 - 45 ر.س",
-        "service_type": "أوبر X",
-        "details": "طلب ظهيرة مسجل الساعة 12:35 م"
+        "pickup_name": "الدمام - الفيصلية / شارع سهل بن صخر",
+        "dropoff_name": "الخبر - شارع 25هـ / حي العزيزية",
+        "price": "38 - 48 ر.س",
+        "service_type": "وصول",
+        "shift_type": "خروج مدارس ومعاهد"
     },
     {
-        "id": "ride_006",
-        "request_time": time(13, 20),
+        "id": "ride_midday_08",
+        "request_time": time(13, 15),
         "pickup_lat": 26.4420,
         "pickup_lon": 50.0890,
         "pickup_name": "الدمام - شارع 13 الصفا",
-        "dropoff_name": "القطيف - داود القزاز",
-        "price": "50 - 60 ر.س",
+        "dropoff_name": "القطيف - حي داود القزاز وصفوى",
+        "price": "50 - 62 r.s",
         "service_type": "وصول",
-        "details": "طلب عودة موظفين الساعة 01:20 م"
+        "shift_type": "خروج موظفي وردية النهار"
     },
     {
-        "id": "ride_007",
-        "request_time": time(16, 25),
-        "pickup_lat": 26.5310,
-        "pickup_lon": 50.0240,
-        "pickup_name": "القطيف - شارع ابن النباشي",
-        "dropoff_name": "الدمام - شارع محمد القرطبي",
-        "price": "35 - 45 ر.س",
+        "id": "ride_midday_09",
+        "request_time": time(13, 40),
+        "pickup_lat": 26.2840,
+        "pickup_lon": 50.1980,
+        "pickup_name": "الخبر - العقربية / شارع 10 تقاطع مكة",
+        "dropoff_name": "الدمام - حي المزروعية وحي الطبيشي",
+        "price": "40 - 52 ر.س",
         "service_type": "أوبر X",
-        "details": "طلب مشاوير مسائية الساعة 04:25 م"
+        "shift_type": "عودة الموظفين لمنازلهم"
     },
     {
-        "id": "ride_008",
-        "request_time": time(16, 50),
-        "pickup_lat": 26.4110,
-        "pickup_lon": 50.1190,
-        "pickup_name": "الدمام - شارع عبدالرحمن البزاز",
-        "dropoff_name": "الخبر - طريق الأمير تركي",
-        "price": "50 - 60 ر.س",
-        "service_type": "وصول / أوبر",
-        "details": "طلب تسوق مسجل الساعة 04:50 م"
-    },
-    {
-        "id": "ride_009",
-        "request_time": time(18, 15),
+        "id": "ride_midday_10",
+        "request_time": time(14, 10),
         "pickup_lat": 26.3120,
         "pickup_lon": 50.1450,
-        "pickup_name": "الظهران - شارع 733491",
-        "dropoff_name": "القطيف - خالد بن الوليد",
-        "price": "40 - 50 r.s",
+        "pickup_name": "الظهران - طريق الملك فهد محيط أرامكو",
+        "dropoff_name": "بقيق / الأحساء طريق سريع",
+        "price": "80 - 130 ر.س",
+        "service_type": "سفر / بين مدن",
+        "shift_type": "انصراف مهندسين وشركات مقاولات"
+    },
+
+    # --- Afternoon Commercial & Shopping Peak (15:30 - 18:30) ---
+    {
+        "id": "ride_afternoon_11",
+        "request_time": time(16, 20),
+        "pickup_lat": 26.5310,
+        "pickup_lon": 50.0240,
+        "pickup_name": "القطيف - عنك / شارع ابن النباشي",
+        "dropoff_name": "الدمام - مجمع النخيل مول / شارع محمد القرطبي",
+        "price": "35 - 45 ر.س",
         "service_type": "أوبر X",
-        "details": "طلب مسائي مسجل الساعة 06:15 م"
+        "shift_type": "مشاوير تسوق مسائية"
+    },
+    {
+        "id": "ride_afternoon_12",
+        "request_time": time(16, 45),
+        "pickup_lat": 26.4110,
+        "pickup_lon": 50.1190,
+        "pickup_name": "الدمام - عبدالله فؤاد / شارع عبدالرحمن البزاز",
+        "dropoff_name": "الخبر - كورنيش الخبر الشمالي / شارع الأمير تركي",
+        "price": "48 - 60 ر.س",
+        "service_type": "وصول / أوبر",
+        "shift_type": "مشاوير ترفيه ومطاعم"
+    },
+    {
+        "id": "ride_afternoon_13",
+        "request_time": time(17, 15),
+        "pickup_lat": 26.3312,
+        "pickup_lon": 50.1925,
+        "pickup_name": "الظهران / الخبر - مجمع الظهران بوابة 4",
+        "dropoff_name": "الدمام - حي المنار وحي طيبة",
+        "price": "38 - 50 ر.с",
+        "service_type": "وصول",
+        "shift_type": "تسوق وموظفي مبيعات"
+    },
+
+    # --- Evening & Night Shifts (18:30 - 23:30) ---
+    {
+        "id": "ride_evening_14",
+        "request_time": time(19, 10),
+        "pickup_lat": 26.3050,
+        "pickup_lon": 50.2030,
+        "pickup_name": "الخبر - شارع الأمير فيصل بن فهد (البيبسي)",
+        "dropoff_name": "الدمام - الشاطئ الغربي وطريق الخليج",
+        "price": "45 - 55 ر.س",
+        "service_type": "أوبر X",
+        "shift_type": "مطاعم وكافيهات"
+    },
+    {
+        "id": "ride_night_15",
+        "request_time": time(22, 15),
+        "pickup_lat": 26.4520,
+        "pickup_lon": 50.1280,
+        "pickup_name": "الدمام - حي الشاطئ / مارينا مول",
+        "dropoff_name": "القطيف - حي المجيدية وتاروت",
+        "price": "45 - 60 ر.س",
+        "service_type": "وصول / أوبر",
+        "shift_type": "إغلاق المولات والعودة للمنازل"
+    },
+    {
+        "id": "ride_night_16",
+        "request_time": time(23, 30),
+        "pickup_lat": 26.4710,
+        "pickup_lon": 49.7980,
+        "pickup_name": "مطار الملك فهد الدولي (صالة القدوم)",
+        "dropoff_name": "الخبر - الحزام الذهبي / الظهران",
+        "price": "90 - 130 ر.س",
+        "service_type": "UberXL / مطار",
+        "shift_type": "رحلات قدوم ليلية"
     }
 ]
 
@@ -169,7 +253,7 @@ def find_matching_rides(captain_lat, captain_lon, now_dt):
 # ==============================================================================
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     msg = (
-        "🚀 رادار الطلبات المباشر مفعل.\n"
+        "🚀 رادار الطلبات المباشר مفعل.\n"
         "أرسل موقعك المباشر (Live Location) لربطه بسجل الطلبات السابقة وإشعارك بالطلبات المحتملة في نفس التوقيت والمنطقة."
     )
     await update.message.reply_text(msg)
