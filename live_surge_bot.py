@@ -97,4 +97,103 @@ HISTORICAL_RIDES = [
     _r("ride_ai_030", 12, 42, 26.2994, 50.1900, "طريق الملك فيصل بن عبد العزيز. الخبر", "24 7435. القطيف", "47.69 ر.س", "Wusool", "مشوار طويل (أكثر من 30 دقيقة)"),
     _r("ride_ai_035", 5, 0, 26.2999, 50.2061, "شارع الأمير ماجد بن عبدالعزيز 7283. الخبر", "شارع سمية بنت اسلم 3261. الدمام", "42.42 ر.س", "Wusool حصري", "مشوار طويل (أكثر من 30 دقيقة)"),
     _r("ride_ai_038", 8, 7, 26.5442, 49.9989, "شارع 76622. القطيف", "شارع الأمير محمد بن عبد العزيز 7775. الخبر", "61.70 ر.س", "Wusool", "مشوار طويل (أكثر من 30 دقيقة)"),
-    _r("ride_ai_048", 15, 5
+    _r("ride_ai_048", 15, 50, 26.2816, 50.1851, "شارع طارق بن زياد 2251 الخبر", "شارع 646416. القطيف", "49.99 ر.س", "Wusool حصري", "مشوار طويل (أكثر من 30 دقيقة)"),
+    _r("ride_ai_049", 17, 26, 26.2764, 50.1936, "التعاطف 3489. الخبر", "605. الدمام", "67.55 ر.س", "Wusool حصري", "مشوار طويل (أكثر من 30 دقيقة)"),
+    _r("ride_ai_051", 7, 29, 26.2749, 50.2154, "الشارع الثاني 8215، الخبر", "المزروعية، الدمام", "33.90 ر.س", "Wusool", "رحلة قياسية"),
+    _r("ride_ai_052", 17, 34, 26.2872, 50.2070, "الشارع الثاني 8215. الخبر", "المزروعية. الدمام", "31.63 ر.س", "Wusool", "رحلة قياسية"),
+    _r("ride_ai_060", 4, 5, 26.4190, 50.0479, "شارع عمر بن الخطاب 8615. الدمام", "شارع العلاء ابن محمد 4399. الخبر", "36.20 ر.س", "Wusool", "رحلة قياسية"),
+    _r("ride_ai_068", 3, 47, 26.4374, 50.1023, "شارع أبو أوس الأسلمي 2810 الدمام", "شارع عبد الله بن عمر 7065. رأس تنورة", "43.16 ر.س", "Wusool حصري", "مشوار طويل (أكثر من 30 دقيقة)"),
+    _r("ride_ai_069", 4, 49, 26.2761, 50.2041, "شارع عبد الرحمن الداخل 4298. الخبر", "شارع الدمام 7588. رأس تنورة", "79.94 ر.س", "Wusool", "مشوار طويل (أكثر من 30 دقيقة)"),
+    _r("ride_ai_074", 9, 19, 26.4032, 50.0973, "شارع الهدى 4807. الدمام", "شارع الملك سلمان بن عبد العزيز 2655. رأس تنورة", "46.84 ر.س", "Wusool", "مشوار طويل (أكثر من 30 دقيقة)"),
+    _r("ride_ai_084", 14, 45, 26.3056, 50.1955, "طريق الأمير فيصل بن فهد بن عبد العزيز 3132. الخبر", "طريق أحد. القطيف", "62.94 ر.س", "Wusool", "مشوار طويل (أكثر من 30 دقيقة)"),
+    _r("ride_ai_090", 18, 1, 26.2696, 50.1986, "طارق بن زياد. الخبر", "شارع الحسن بن علي 6511. القطيف", "54.53 ر.س", "Wusool", "مشوار طويل (أكثر من 30 دقيقة)"),
+    _r("ride_ai_110", 3, 56, 26.5654, 50.0009, "الكوثر 3730. القطيف", "شارع خلف بن تميم 2770. الدمام", "39.02 ر.س", "Wusool", "مشوار طويل (أكثر من 30 دقيقة)"),
+    _r("ride_ai_132", 5, 56, 26.2949, 50.1888, "شارع الأمير نايف بن عبد العزيز 8375. الخبر", "شارع محمد الكوفي 9138. بقيق", "102.37 ر.س", "Wusool", "مشوار طويل (أكثر من 30 دقيقة)"),
+    _r("ride_ai_187", 16, 32, 26.4180, 50.1018, "شارع الطبيعة 3010. الدمام", "طريق 2882118. الجبيل الصناعية", "84.05 ر.س", "Wusool", "مشوار طويل (أكثر من 30 دقيقة)"),
+    _r("ride_ai_194", 17, 30, 26.5619, 50.0183, "الفلاح 3801. القطيف", "شارع خلف بن تميم 2770. الدمام", "37.98 ر.س", "Wusool حصري", "مشوار طويل (أكثر من 30 دقيقة)"),
+    _r("ride_ai_201", 4, 7, 26.4090, 50.0695, "شارع 15ب 7520. الدمام", "شارع الملك فيصل الغربي 6234. الجبيل", "60.90 ر.س", "Wusool", "مشوار طويل (أكثر من 30 دقيقة)"),
+    _r("ride_ai_351", 7, 7, 26.5884, 50.0141, "شارع علي الأنصاري 4776. القطيف", "طريق 1. الدمام", "60.81 ر.س", "Wusool", "مشوار طويل (أكثر من 30 دقيقة)"),
+    _r("ride_ai_388", 13, 39, 26.4412, 50.0897, "شارع 13 الصفا. الدمام", "شارع داود القزاز 3469 القطيف", "55.63 ر.س", "Wusool", "مشوار طويل (أكثر من 30 دقيقة)"),
+    _r("ride_ai_502", 10, 12, 26.3041, 50.2221, "جامعة الملك فهد للبترول 4104. الظهران", "القطيف", "47.71 ر.س", "Wusool حصري", "مشوار طويل (أكثر من 30 دقيقة)"),
+]
+
+def find_matching_rides(captain_lat, captain_lon, now_dt):
+    matches = []
+    current_minutes = now_dt.hour * 60 + now_dt.minute
+    current_weekday = now_dt.weekday()
+
+    for ride in HISTORICAL_RIDES:
+        allowed_days = ride.get("days")
+        if allowed_days is not None and current_weekday not in allowed_days:
+            continue
+
+        ride_minutes = ride["request_time"].hour * 60 + ride["request_time"].minute
+        diff_minutes = abs(current_minutes - ride_minutes)
+        diff_minutes = min(diff_minutes, 1440 - diff_minutes)
+
+        if diff_minutes <= TIME_WINDOW_MINUTES:
+            dist = geodesic((captain_lat, captain_lon), (ride["pickup_lat"], ride["pickup_lon"])).kilometers
+            max_radius = ride.get("alert_radius_km", ALERT_RADIUS_KM)
+            if dist <= max_radius:
+                matches.append((ride, dist, diff_minutes))
+
+    matches.sort(key=lambda x: (0 if "train_arrival" in x[0] else 1, x[1], x[2]))
+    return matches
+
+async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    msg = (
+        "🚀 رادار الطلبات المباشر مفعل.\n"
+        f"قاعدة البيانات محدثة وتضم {len(HISTORICAL_RIDES)} موقعاً وجدول قطارات الدمام.\n"
+        "أرسل موقعك المباشر (Live Location) لإشعارك بالطلبات المحتملة ومواعيد وصول القطار قبل الموعد بـ 30 دقيقة."
+    )
+    await update.message.reply_text(msg)
+
+async def handle_location(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    msg = update.message or update.edited_message
+    if not msg or not msg.location:
+        return
+
+    chat_id = update.effective_chat.id
+    c_lat = msg.location.latitude
+    c_lon = msg.location.longitude
+
+    now_dt = datetime.now(TIMEZONE)
+    today_str = now_dt.strftime("%Y-%m-%d")
+
+    for ride, dist, diff_min in find_matching_rides(c_lat, c_lon, now_dt):
+        history_key = (chat_id, ride["id"])
+        if alert_history.get(history_key) == today_str:
+            continue
+        alert_history[history_key] = today_str
+
+        if "train_arrival" in ride:
+            alert_text = (
+                f"🚆 *تنبيه وصول قطار لمحطة الدمام (قبل الموعد بـ 30 دقيقة)!*\n\n"
+                f"📍 *الموقع:* {ride['pickup_name']}\n"
+                f"📏 *يبعد عنك:* {dist:.1f} كم\n"
+                f"⏰ *وقت التنبيه:* {ride['request_time'].strftime('%I:%M %p')} (وصول القطار: {ride['train_arrival']})\n"
+                f"🎯 *الوجهة المسجلة:* {ride['dropoff_name']}\n"
+                f"💰 *السعر المتوقع:* {ride['price']}\n"
+                f"🚖 *النوع:* {ride['service_type']}\n"
+                f"ℹ️ *الملاحظة:* {ride['shift_type']}."
+            )
+        else:
+            alert_text = (
+                f"🎯 *طلب محتمل في نفس التوقيت!*\n\n"
+                f"📍 *الموقع:* {ride['pickup_name']}\n"
+                f"📏 *يبعد عنك:* {dist:.1f} كم\n"
+                f"⏰ *وقت الطلب السابق:* {ride['request_time'].strftime('%I:%M %p')}\n"
+                f"🎯 *الوجهة المسجلة:* {ride['dropoff_name']}\n"
+                f"💰 *السعر السابق:* {ride['price']}\n"
+                f"🚖 *النوع:* {ride['service_type']}\n"
+                f"ℹ️ *الملاحظة:* تم تسجيل طلب مطابق سابقاً من هذه النقطة في نفس هذا الوقت ({ride['shift_type']})."
+            )
+
+        await context.bot.send_message(chat_id=chat_id, text=alert_text, parse_mode="Markdown")
+
+if __name__ == "__main__":
+    threading.Thread(target=run_health_server, daemon=True).start()
+    app = ApplicationBuilder().token(TELEGRAM_BOT_TOKEN).build()
+    app.add_handler(CommandHandler("start", start))
+    app.add_handler(MessageHandler(filters.LOCATION, handle_location))
+    app.run_polling()
