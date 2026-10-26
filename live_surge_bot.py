@@ -1,7 +1,34 @@
-# ==============================================================================
-# Telegram Handlers
-# ==============================================================================
-from telegram import InlineKeyboardButton, InlineKeyboardMarkup
+import threading
+import logging
+import time
+from datetime import datetime
+import pytz
+from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
+from telegram.ext import ApplicationBuilder, CommandHandler, MessageHandler, filters, ContextTypes
+from flask import Flask
+import requests
+
+# إعداد السجلات
+logging.basicConfig(
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    level=logging.INFO
+)
+
+# إعدادات البوت - تأكد من وضع رمز التوكين الخاص بك هنا
+TELEGRAM_BOT_TOKEN = "YOUR_TELEGRAM_BOT_TOKEN"
+TIMEZONE = pytz.timezone("Asia/Riyadh")
+
+alert_history = {}
+
+# خادم Flask بسيط لإبقاء تطبيق Render نشطاً
+app = Flask(__name__)
+
+@app.route("/")
+def home():
+    return "Bot is running!"
+
+def run_health_server():
+    app.run(host="0.0.0.0", port=10000)
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     msg = (
@@ -77,9 +104,6 @@ async def handle_location(update: Update, context: ContextTypes.DEFAULT_TYPE):
             longitude=lon,
         )
 
-# ==============================================================================
-# Main Entry Point
-# ==============================================================================
 if __name__ == "__main__":
     threading.Thread(target=run_health_server, daemon=True).start()
 
